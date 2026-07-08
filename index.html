@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Space Project</title>
+    <style>
+        /* CSS Reset for consistent spacing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: #05070f;
+            color: #f1f5f9;
+            line-height: 1.6;
+            
+            /* Stack multiple sections vertically and allow scrolling */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            gap: 2rem; 
+        }
+
+        /* Container to keep all panels uniform in width */
+        .content-container {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Glassmorphism panel styling */
+        .glass-panel {
+            display: block; 
+            text-decoration: none; 
+            color: inherit; 
+            background: rgba(15, 23, 42, 0.45); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            
+            /* Smooth animation for hovering */
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Hover effect makes the card float up and glow slightly */
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            background: rgba(15, 23, 42, 0.6);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header styling with + and - indicators */
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h2::after {
+            content: '+';
+            font-size: 2rem;
+            font-weight: 300;
+            color: #38bdf8;
+        }
+
+        /* When the panel is active, change the + to a - */
+        .glass-panel.active h2::after {
+            content: '−';
+        }
+
+        /* Hide the content by default */
+        .panel-content {
+            display: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Show the content when the active class is applied */
+        .glass-panel.active .panel-content {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Smooth fade in animation for the text */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Styles for Results Grid */
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+        }
+
+        .result-row {
+            display: contents; 
+        }
+
+        .subject {
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .score {
+            font-weight: 600;
+            color: #38bdf8; 
+        }
+
+        /* Styles for Books and Tips lists */
+        .item-list {
+            list-style: none;
+        }
+
+        .item-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+        }
+
+        .item-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .tip-title {
+            font-weight: 600;
+            color: #fff;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-container">
+        
+        <!-- Section 1: Exam Results -->
+        <div class="glass-panel" onclick="this.classList.toggle('active')">
+            <h2>Exam Results</h2>
+            <div class="panel-content">
+                <div class="results-grid">
+                    <div class="result-row">
+                        <span class="subject">Mathematics</span>
+                        <span class="score">Excellent</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="subject">Science</span>
+                        <span class="score">Excellent</span>
+                    </div>
+                    <div class="result-row">
+                        <span class="subject">Citizenship Education</span>
+                        <span class="score">Excellent</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Books -->
+        <div class="glass-panel" onclick="this.classList.toggle('active')">
+            <h2>Books</h2>
+            <div class="panel-content">
+                <ul class="item-list">
+                    <li>Grade 8 Mathematics Textbook</li>
+                    <li>Grade 8 Citizenship Education Guide</li>
+                    <li>Inspirational Readings & Ethics Resources</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 3: Tips -->
+        <div class="glass-panel" onclick="this.classList.toggle('active')">
+            <h2>Study & Focus Tips</h2>
+            <div class="panel-content">
+                <ul class="item-list">
+                    <li>
+                        <span class="tip-title">1. Lock Your Schedule</span>
+                        Keep consistent bedtimes and study slots every single day to maximize your natural focus windows.
+                    </li>
+                    <li>
+                        <span class="tip-title">2. Screen-Free Mind Resets</span>
+                        After long study stretches or digital activities, step outside for a walk to refresh your mind with fresh air instead of looking at a phone screen.
+                    </li>
+                    <li>
+                        <span class="tip-title">3. Active Self-Testing</span>
+                        Instead of just re-reading text, quiz yourself on core formulas or definitions to anchor them securely into long-term memory.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
